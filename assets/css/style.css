@@ -345,12 +345,18 @@ em{ font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color:
 .compare{ position:relative; max-width: 960px; margin:0 auto; aspect-ratio: 16/9; border-radius:24px; overflow:hidden; box-shadow: 0 40px 80px -30px rgba(14,26,43,.28); cursor: ew-resize; user-select:none; }
 .compare img{ width:100%; height:100%; object-fit:cover; display:block; user-select:none; -webkit-user-drag:none; }
 .compare-after{ position:absolute; inset:0; }
-.compare-before{ position:absolute; inset:0; width:52%; overflow:hidden; border-right:1px solid rgba(255,255,255,.5); }
-.compare-before img{ width: 960px; max-width:none; height:100%; }
+.compare-before{
+  position:absolute; inset:0; clip-path: inset(0 48% 0 0);
+  border-right:1px solid rgba(255,255,255,.5);
+}
 .compare-handle{
   position:absolute; top:50%; left:52%; transform: translate(-50%,-50%);
   width:44px; height:44px; border-radius:50%; background:#fff; color:var(--ink);
   display:flex; align-items:center; justify-content:center; box-shadow:0 8px 24px rgba(14,26,43,.3);
+}
+.compare-handle::before{
+  content:''; position:absolute; top:-1000px; bottom:-1000px; left:50%; width:2px;
+  background: rgba(255,255,255,.85); transform: translateX(-50%); z-index:-1;
 }
 .compare-tag{ position:absolute; top:16px; padding:6px 14px; border-radius:999px; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
 .compare-tag--after{ right:16px; background: rgba(14,26,43,.75); color:#fff; }
@@ -459,7 +465,7 @@ em{ font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; color:
   .field-row{ grid-template-columns: 1fr; }
   .footer-top{ grid-template-columns: 1fr; }
   .floating-card--service{ display:none; }
-  .hero{ padding-top: 120px; }
+  .hero{ padding-top: 120px; justify-content: flex-end; padding-bottom: 56px; }
   .hero-bg-veil{
     background: linear-gradient(180deg, rgba(252,251,248,.5) 0%, rgba(252,251,248,.68) 40%, rgba(252,251,248,.85) 70%, var(--paper) 100%);
   }
